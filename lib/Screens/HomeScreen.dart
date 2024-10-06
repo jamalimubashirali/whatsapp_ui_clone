@@ -8,7 +8,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List <String> contacts = ["Contact 1" , "Contact 2" , "Contact 3"];
+  List<String> contacts = List.generate(50, (index) => "Contact $index");
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -19,27 +19,29 @@ class _HomeScreenState extends State<HomeScreen> {
               "Whatsapp",
               style: TextStyle(color: Colors.white),
             ),
-            backgroundColor: Colors.teal,
-            bottom: const TabBar(tabs: [
-              Tab(
-                child: Text(
-                  "Chat",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-              Tab(
-                child: Text(
-                  "Status",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-              Tab(
-                child: Text(
-                  "Calls",
-                  style: TextStyle(color: Colors.white),
-                ),
-              )
-            ]),
+            bottom: const TabBar(
+                indicatorSize: TabBarIndicatorSize.tab,
+                indicatorColor: Colors.white,
+                tabs: [
+                  Tab(
+                    child: Text(
+                      "Chat",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      "Status",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      "Calls",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  )
+                ]),
             actions: [
               const Icon(
                 Icons.search_rounded,
@@ -50,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Icons.more_horiz_outlined,
                   color: Colors.white,
                 ),
-                offset: const Offset(0 , 40),
+                offset: const Offset(0, 40),
                 itemBuilder: (BuildContext context) {
                   return const [
                     PopupMenuItem(
@@ -59,9 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     PopupMenuItem(
                       child: Text("Settings"),
                     ),
-                    PopupMenuItem(
-                        child: Text("Logout")
-                    ),
+                    PopupMenuItem(child: Text("Logout")),
                   ];
                 },
               ),
@@ -73,19 +73,20 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: const CircleAvatar(
-                    backgroundImage: AssetImage(
-                      "assets/images/MyPhoto.jpeg"
-                    ),
+                    backgroundImage: AssetImage("assets/images/MyPhoto.jpeg"),
                   ),
                   title: Text(contacts[index]),
                   subtitle: const Text("This my msg"),
-                  trailing: const Icon(
-                    Icons.access_time
-                  ),
+                  trailing: Text(DateTime.now().toString()),
                 );
-              },),
-            const Center(child: Text("This Status tab"),),
-            const Center(child: Text("This Calls tab"),),
+              },
+            ),
+            const Center(
+              child: Text("This Status tab"),
+            ),
+            const Center(
+              child: Text("This Calls tab"),
+            ),
           ]),
         ));
   }
