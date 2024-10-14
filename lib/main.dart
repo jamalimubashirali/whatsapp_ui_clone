@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_ui_clone/Screens/ChatsScreen.dart';
 import 'package:whatsapp_ui_clone/Screens/HomeScreen.dart';
 
 void main() {
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: HomeScreen(),
     );
   }
